@@ -26,8 +26,8 @@ export default function Movie({ movie }) {
             <button variant="primary" onClick={() => setLiked(!liked)}>
                 {liked ? "Dislike" : "Like"}
             </button>
-            {liked && <span>❤️</span>}
-            {liked === false && <span>😒</span>}
+            {liked && <span> Vous aimez ❤️</span>}
+            {liked === false && <span> Vous n'aimez pas 😒</span>}
             <div className="progress-bar">
                 <div
                     className="progress-bar-filled"

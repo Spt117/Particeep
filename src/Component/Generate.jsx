@@ -2,21 +2,26 @@ import { movies$ } from "./Movies.jsx";
 import Movie from "./Movie.jsx";
 import { useEffect } from "react";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { getMyMovies } from "../Store.jsx";
+// import { useSelector } from "react-redux";
 
 export default function Generate() {
     const [array, setArray] = useState([]);
+    const dispatch = useDispatch();
+    // const moovies = useSelector((state) => state.myMovies);
 
     useEffect(() => {
+        // console.log(moovies);
         films();
-    }, []);
+    }, [array]);
 
     // récupérer le tableau en asynchrone
     async function films() {
         const film = await movies$;
         setArray(film);
+        dispatch(getMyMovies([0]));
     }
-
-    function handleChange() {}
 
     if (array.length > 0)
         return (
@@ -27,32 +32,6 @@ export default function Generate() {
                             <Movie movie={movie} />
                         </div>
                     ))}
-                </div>
-                <div>
-                    <label>
-                        <input
-                            type="checkbox"
-                            value="option1"
-                            onChange={handleChange}
-                        />
-                        Option 1
-                    </label>
-                    <label>
-                        <input
-                            type="checkbox"
-                            value="option2"
-                            onChange={handleChange}
-                        />
-                        Option 2
-                    </label>
-                    <label>
-                        <input
-                            type="checkbox"
-                            value="option3"
-                            onChange={handleChange}
-                        />
-                        Option 3
-                    </label>
                 </div>
             </div>
         );
