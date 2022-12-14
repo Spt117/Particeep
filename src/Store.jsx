@@ -51,6 +51,6 @@ function reducer(state = initialState, action) {
 export const store = createStore(reducer);
 
 store.subscribe(() => {
-    console.log("Nouveau state:");
+    // console.log("Nouveau state:");
     console.log(store.getState());
 });

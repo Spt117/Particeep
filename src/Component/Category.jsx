@@ -24,7 +24,7 @@ export default function Category() {
         setCategory(categorys);
     }
 
-    //filtrer
+    //envoyer les filtres dans le state
     function filtre() {
         let category = [];
         let check = document.getElementsByName("category");

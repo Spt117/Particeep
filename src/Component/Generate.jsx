@@ -13,6 +13,7 @@ export default function Generate() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [myMoovies, myFilter]);
 
+    //on filtre en fonction des categories sélectionnées
     function filtre() {
         let array = [];
         if (myFilter.length === 0) {
@@ -31,9 +32,7 @@ export default function Generate() {
         <div>
             <div id="container">
                 {mooviesFiltre.map((movie, index) => (
-                    <div key={index} className="card" id={"a" + movie.id}>
-                        <Movie movie={movie} />
-                    </div>
+                    <Movie key={index} movie={movie} />
                 ))}
             </div>
         </div>
