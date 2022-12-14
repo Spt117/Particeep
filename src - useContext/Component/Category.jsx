@@ -1,23 +1,18 @@
 import { useEffect } from "react";
 import { useState } from "react";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
-import { myFilter } from "../store.jsx";
 
-export default function Category() {
+export default function Category({ arrayMoovie, setFilter }) {
     const [category, setCategory] = useState([]);
-    const myMoovies = useSelector((state) => state.Movies);
-    const dispatch = useDispatch();
 
     useEffect(() => {
-        if (myMoovies) getCategory();
+        if (arrayMoovie) getCategory();
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [myMoovies]);
+    }, [arrayMoovie]);
 
     //récupérer les catégories
     function getCategory() {
         let categorys = [];
-        for (const film of myMoovies) {
+        for (const film of arrayMoovie) {
             if (!categorys.includes(film.category))
                 categorys.push(film.category);
         }
@@ -31,7 +26,7 @@ export default function Category() {
         for (const i of check) {
             if (i.checked) category.push(i.value);
         }
-        dispatch(myFilter(category));
+        setFilter(category);
     }
 
     return (
