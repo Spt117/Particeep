@@ -4,25 +4,8 @@ import produce from "immer";
 const initialState = {
     Movies: [],
     Filters: [],
-    Pages: 0,
+    Pages: 12,
 };
-
-// export function getMyMovies(moovies) {
-//     console.log(moovies);
-//     return {
-//         type: "getMyMovies",
-//         newMoovies: moovies,
-//     };
-// }
-
-// function reducer(state = initialState, action) {
-//     if (action.type === "getMyMovies")
-//         return {
-//             ...state,
-//             myMovies: getMyMovies.newMoovies,
-//         };
-//     return state;
-// }
 
 export const myMovies = (moovies) => ({
     type: "myMovies",
@@ -32,6 +15,11 @@ export const myMovies = (moovies) => ({
 export const myFilter = (filter) => ({
     type: "myFilter",
     value: filter,
+});
+
+export const myPage = (page) => ({
+    type: "myPage",
+    value: page,
 });
 
 function reducer(state = initialState, action) {
@@ -45,6 +33,11 @@ function reducer(state = initialState, action) {
             draft.Filters = action.value;
         });
     }
+    if (action.type === "myPage") {
+        return produce(state, (draft) => {
+            draft.Pages = action.value;
+        });
+    }
     return state;
 }
 
@@ -52,5 +45,5 @@ export const store = createStore(reducer);
 
 store.subscribe(() => {
     // console.log("Nouveau state:");
-    console.log(store.getState());
+    // console.log(store.getState());
 });

@@ -5,12 +5,28 @@ import { myMovies } from "../store.jsx";
 
 export default function Movie({ movie }) {
     const [liked, setLiked] = useState(null);
+    const [like, setlike] = useState(0);
+    const [disLike, setDislike] = useState(0);
     const myMoovies = useSelector((state) => state.Movies);
     const dispatch = useDispatch();
 
     useEffect(() => {
-        console.log(movie);
-    }, [myMoovies]);
+        likes();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [liked]);
+
+    //mettre en place les likes et dislike avec MAJ
+    function likes() {
+        setlike(movie.likes);
+        setDislike(movie.dislikes);
+        if (liked) {
+            setlike(movie.likes + 1);
+            setDislike(movie.dislikes);
+        } else if (liked === false) {
+            setlike(movie.likes);
+            setDislike(movie.dislikes + 1);
+        }
+    }
 
     // calculer le ratio like/dislike
     function ratioBar() {
@@ -19,13 +35,11 @@ export default function Movie({ movie }) {
     }
 
     //fermer la carte
-    function closeCard(event) {
-        event.preventDefault();
-        const card = document.querySelector(`#card-${movie.id}`);
-        card.style.display = "none";
+    function closeCard(e) {
+        // const card = document.querySelector(`#card-${movie.id}`);
+        // card.style.display = "none";
         const newMoovies = myMoovies.filter((film) => film.id !== movie.id);
         dispatch(myMovies(newMoovies));
-        event.stopImmediatePropagation();
     }
 
     return (
@@ -45,6 +59,10 @@ export default function Movie({ movie }) {
                     className="progress-bar-filled"
                     style={{ width: `${ratioBar()}%` }}
                 ></div>
+            </div>
+            <div id="like">
+                <div>{like} 🥰</div>
+                <div>{disLike} 😒</div>
             </div>
         </div>
     );
