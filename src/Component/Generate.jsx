@@ -1,21 +1,25 @@
 import Movie from "./Movie.jsx";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import ReactPaginate from "react-paginate";
 
 export default function Generate() {
     const myMoovies = useSelector((state) => state.Movies);
     const myFilter = useSelector((state) => state.Filters);
-    const myPages = useSelector((state) => state.Pages);
+    const numberOfMoviesbyPage = useSelector((state) => state.Pages);
+
     const [mooviesFiltre, setMooviesFiltre] = useState([]);
+    const [arrayPages, setArrayPages] = useState([]);
     const [pageNumber, setPageNumber] = useState(0);
 
     useEffect(() => {
         filtre();
-        calculePages();
-        setPages();
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [myMoovies, myFilter, myPages]);
+    }, [myMoovies, myFilter]);
+
+    useEffect(() => {
+        if (mooviesFiltre.length > 0) setPages();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [mooviesFiltre, myFilter, myMoovies, numberOfMoviesbyPage, pageNumber]);
 
     //on filtre en fonction des categories sélectionnées
     function filtre() {
@@ -32,36 +36,51 @@ export default function Generate() {
         }
     }
 
-    // on calcule le nombre de pages
-    function calculePages() {
-        const number = myMoovies.length / myPages;
-        setPageNumber(Math.ceil(number));
-    }
-
     // on fait des sous tableau par pages
     function setPages() {
         let parentArray = [];
-        // for (let i = 0; i < myMoovies.length; i += myPages) {
-        //     parentArray.push(myMoovies.slice(i, i + myPages));
-        //     console.log(myPages);
-        // }
-        for (let i = 0; i < myMoovies.length; i++) {
-            // Découpe l'array en plusieurs array avec myPages éléments chacun
-            if (i % myPages === 0) {
-                parentArray.push(myMoovies.slice(i, i + myPages));
-            }
+        for (let i = 0; i < mooviesFiltre.length; i += numberOfMoviesbyPage) {
+            let child = mooviesFiltre.slice(i, i + numberOfMoviesbyPage);
+            parentArray.push(child);
         }
-        console.log(parentArray);
+        setArrayPages(parentArray);
+    }
+
+    //fonction pour changer de page
+    function changePage(page) {
+        setPageNumber(pageNumber + page);
     }
 
     return (
         <div>
-            <div id="container">
-                {mooviesFiltre.map((movie) => (
-                    <Movie key={movie.id} movie={movie} />
-                ))}
-            </div>
-            <div id="pages">{}</div>
+            {mooviesFiltre.length <= numberOfMoviesbyPage && (
+                <div id="container">
+                    {mooviesFiltre.map((movie) => (
+                        <Movie key={movie.id} movie={movie} />
+                    ))}
+                </div>
+            )}
+            {mooviesFiltre.length > numberOfMoviesbyPage && (
+                <div>
+                    <div id="container">
+                        {arrayPages[pageNumber].map((movie) => (
+                            <Movie key={movie.id} movie={movie} />
+                        ))}
+                    </div>
+                    <div id="container">
+                        {pageNumber >= 1 && (
+                            <button onClick={() => changePage(-1)}>
+                                Page précédente
+                            </button>
+                        )}
+                        {pageNumber < arrayPages.length - 1 && (
+                            <button onClick={() => changePage(1)}>
+                                Page suivante
+                            </button>
+                        )}
+                    </div>
+                </div>
+            )}
         </div>
     );
 }

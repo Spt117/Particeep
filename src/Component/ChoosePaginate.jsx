@@ -13,7 +13,7 @@ export default function ChoosePaginate() {
     // envoyer la pagination dans le state
     function getPaginate() {
         let value = document.querySelector("#paginate");
-        dispatch(myPage(value.value));
+        dispatch(myPage(Number(value.value)));
     }
 
     return (
