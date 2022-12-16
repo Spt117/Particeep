@@ -7,13 +7,14 @@ export default function Movie({ movie }) {
     const [liked, setLiked] = useState(null);
     const [like, setlike] = useState(0);
     const [disLike, setDislike] = useState(0);
+    const [ratio, setRatio] = useState(0);
     const myMoovies = useSelector((state) => state.movies);
     const dispatch = useDispatch();
 
     useEffect(() => {
         likes();
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [liked]);
+    }, [liked, like, disLike]);
 
     //mettre en place les likes et dislike avec MAJ
     function likes() {
@@ -26,18 +27,17 @@ export default function Movie({ movie }) {
             setlike(movie.likes);
             setDislike(movie.dislikes + 1);
         }
+        ratioBar();
     }
 
     // calculer le ratio like/dislike
     function ratioBar() {
-        let percentage = (movie.likes / (movie.likes + movie.dislikes)) * 100;
-        return percentage;
+        let percentage = (like / (like + disLike)) * 100;
+        setRatio(percentage);
     }
 
     //fermer la carte
     function closeCard(e) {
-        // const card = document.querySelector(`#card-${movie.id}`);
-        // card.style.display = "none";
         const newMoovies = myMoovies.filter((film) => film.id !== movie.id);
         dispatch(myMovies(newMoovies));
     }
@@ -57,7 +57,7 @@ export default function Movie({ movie }) {
             <div className="progress-bar">
                 <div
                     className="progress-bar-filled"
-                    style={{ width: `${ratioBar()}%` }}
+                    style={{ width: `${ratio}%` }}
                 ></div>
             </div>
             <div id="like">
