@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { myFilter } from "./store.jsx";
+import { myFilter } from "./Redux/actions.js";
 
 export default function Category() {
     const [category, setCategory] = useState([]);
@@ -10,7 +10,8 @@ export default function Category() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        if (myMoovies !== undefined) getCategory();
+        getCategory();
+        reset();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [myMoovies]);
 
@@ -27,27 +28,42 @@ export default function Category() {
     //envoyer les filtres dans le state
     function filtre() {
         let category = [];
-        let check = document.getElementsByName("category");
-        for (const i of check) {
-            if (i.checked) category.push(i.value);
+        let arrayCheckbox = document.getElementsByName("category");
+        for (const checkbox of arrayCheckbox) {
+            if (checkbox.checked) category.push(checkbox.value);
         }
         dispatch(myFilter(category));
     }
 
+    // réinitialiser les catégories
+    function reset() {
+        const button = document.querySelector("#reset");
+        let arrayCheckbox = document.getElementsByName("category");
+        button.addEventListener("click", (event) => {
+            for (const checkbox of arrayCheckbox) {
+                checkbox.checked = false;
+            }
+        });
+    }
+
     return (
-        <div>
-            <span>Filtrer par catégories </span>
-            {category.map((category, index) => (
-                <label key={index}>
-                    <input
-                        type="checkbox"
-                        name="category"
-                        value={category}
-                        onChange={filtre}
-                    />
-                    {category}
-                </label>
-            ))}
+        <div id="category">
+            <ul id="liste">
+                <li id="filtres">Filtres</li>
+                {category.map((category, index) => (
+                    <li key={index}>
+                        <label>
+                            <input
+                                type="checkbox"
+                                name="category"
+                                value={category}
+                                onChange={filtre}
+                            />
+                            {category}
+                        </label>
+                    </li>
+                ))}
+            </ul>
         </div>
     );
 }

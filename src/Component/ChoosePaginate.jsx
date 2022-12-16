@@ -1,12 +1,13 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { myPage } from "./store.jsx";
+import { myPage } from "./Redux/actions.js";
 
 export default function ChoosePaginate() {
     const dispatch = useDispatch();
 
     useEffect(() => {
         getPaginate();
+        reset();
         // eslint-disable-next-line
     }, []);
 
@@ -16,9 +17,20 @@ export default function ChoosePaginate() {
         dispatch(myPage(Number(value.value)));
     }
 
+    // réinitialiser le paginate
+    function reset() {
+        const button = document.querySelector("#reset");
+        const paginate = document.querySelector("#paginate");
+        button.addEventListener("click", (event) => {
+            paginate.value = 12;
+        });
+    }
+
     return (
         <div>
-            <label htmlFor="paginate">Nombre de films par pages </label>
+            <label htmlFor="paginate" id="label-paginate">
+                Films par pages{" "}
+            </label>
             <select name="pages" id="paginate" onChange={getPaginate}>
                 <option value="12">12</option>
                 <option value="8">8</option>

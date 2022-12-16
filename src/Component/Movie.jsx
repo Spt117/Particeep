@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { myMovies } from "./store.jsx";
+import { myMovies } from "./Redux/actions.js";
 
 export default function Movie({ movie }) {
     const [liked, setLiked] = useState(null);
@@ -61,8 +61,8 @@ export default function Movie({ movie }) {
                 ></div>
             </div>
             <div id="like">
-                <div>{like} 🥰</div>
-                <div>{disLike} 😒</div>
+                <div>{like} 👍</div>
+                <div>{disLike} 👎</div>
             </div>
         </div>
     );

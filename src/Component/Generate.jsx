@@ -36,7 +36,7 @@ export default function Generate() {
         }
     }
 
-    // on fait des sous tableau par pages
+    // on fait des tableaux enfants pour les pages
     function setPages() {
         let parentArray = [];
         for (let i = 0; i < mooviesFiltre.length; i += numberOfMoviesbyPage) {
@@ -46,15 +46,10 @@ export default function Generate() {
         setArrayPages(parentArray);
     }
 
-    //fonction pour changer de page
-    function changePage(page) {
-        setPageNumber(pageNumber + page);
-    }
-
     return (
-        <div>
+        <div id="generate">
             {mooviesFiltre.length <= numberOfMoviesbyPage && (
-                <div id="container">
+                <div className="container">
                     {mooviesFiltre?.map((movie) => (
                         <Movie key={movie.id} movie={movie} />
                     ))}
@@ -62,22 +57,36 @@ export default function Generate() {
             )}
             {mooviesFiltre.length > numberOfMoviesbyPage && (
                 <div>
-                    <div id="container">
+                    <div className="container">
                         {arrayPages[pageNumber]?.map((movie) => (
                             <Movie key={movie.id} movie={movie} />
                         ))}
                     </div>
-                    <div id="container">
-                        {pageNumber >= 1 && (
-                            <button onClick={() => changePage(-1)}>
-                                Page précédente
-                            </button>
-                        )}
-                        {pageNumber < arrayPages.length - 1 && (
-                            <button onClick={() => changePage(1)}>
-                                Page suivante
-                            </button>
-                        )}
+                    <div className="container">
+                        <div>
+                            {pageNumber >= 1 && (
+                                <button
+                                    className="button-pagination"
+                                    onClick={() =>
+                                        setPageNumber(pageNumber - 1)
+                                    }
+                                >
+                                    Page précédente
+                                </button>
+                            )}
+                        </div>
+                        <div>
+                            {pageNumber < arrayPages.length - 1 && (
+                                <button
+                                    className="button-pagination"
+                                    onClick={() =>
+                                        setPageNumber(pageNumber + 1)
+                                    }
+                                >
+                                    Page suivante
+                                </button>
+                            )}
+                        </div>
                     </div>
                 </div>
             )}

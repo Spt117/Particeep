@@ -7,11 +7,18 @@ import Init from "./Component/Init.jsx";
 function App() {
     return (
         <div className="App">
-            <Init />
             <h1>Mes films préférés</h1>
             <Generate />
-            <ChoosePaginate />
-            <Category />
+            <div className="container">
+                <div id="panel">
+                    <h4>Panneau de contrôle</h4>
+                    <div className="container">
+                        <Category />
+                        <ChoosePaginate />
+                    </div>
+                    <Init />
+                </div>
+            </div>
         </div>
     );
 }
