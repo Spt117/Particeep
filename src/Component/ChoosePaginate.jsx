@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { myPage } from "../store.jsx";
+import { myPage } from "./store.jsx";
 
 export default function ChoosePaginate() {
     const dispatch = useDispatch();

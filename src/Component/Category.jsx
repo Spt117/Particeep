@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { myFilter } from "../store.jsx";
+import { myFilter } from "./store.jsx";
 
 export default function Category() {
     const [category, setCategory] = useState([]);

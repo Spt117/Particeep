@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { myMovies } from "../store.jsx";
+import { myMovies } from "./store.jsx";
 
 export default function Movie({ movie }) {
     const [liked, setLiked] = useState(null);

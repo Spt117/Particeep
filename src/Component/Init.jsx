@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { movies$ } from "./Movies.jsx";
 import { useDispatch } from "react-redux";
-import { myMovies } from "../store.jsx";
+import { myMovies } from "./store.jsx";
 
 export default function Init() {
     const dispatch = useDispatch();
