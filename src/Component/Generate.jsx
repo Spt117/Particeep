@@ -3,16 +3,16 @@ import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 
 export default function Generate() {
-    const myMoovies = useSelector((state) => state.Movies);
-    const myFilter = useSelector((state) => state.Filters);
-    const numberOfMoviesbyPage = useSelector((state) => state.Pages);
+    const myMoovies = useSelector((state) => state.movies);
+    const myFilter = useSelector((state) => state.filters);
+    const numberOfMoviesbyPage = useSelector((state) => state.pages);
 
     const [mooviesFiltre, setMooviesFiltre] = useState([]);
     const [arrayPages, setArrayPages] = useState([]);
     const [pageNumber, setPageNumber] = useState(0);
 
     useEffect(() => {
-        filtre();
+        if (myFilter !== undefined) filtre();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [myMoovies, myFilter]);
 

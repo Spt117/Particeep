@@ -6,11 +6,11 @@ import { myFilter } from "../store.jsx";
 
 export default function Category() {
     const [category, setCategory] = useState([]);
-    const myMoovies = useSelector((state) => state.Movies);
+    const myMoovies = useSelector((state) => state.movies);
     const dispatch = useDispatch();
 
     useEffect(() => {
-        if (myMoovies) getCategory();
+        if (myMoovies !== undefined) getCategory();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [myMoovies]);
 

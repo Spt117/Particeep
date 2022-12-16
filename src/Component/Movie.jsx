@@ -7,7 +7,7 @@ export default function Movie({ movie }) {
     const [liked, setLiked] = useState(null);
     const [like, setlike] = useState(0);
     const [disLike, setDislike] = useState(0);
-    const myMoovies = useSelector((state) => state.Movies);
+    const myMoovies = useSelector((state) => state.movies);
     const dispatch = useDispatch();
 
     useEffect(() => {

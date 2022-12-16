@@ -1,10 +1,42 @@
-import { createStore } from "redux";
-import produce from "immer";
+import { configureStore } from "@reduxjs/toolkit";
 
 const initialState = {
-    Movies: [],
-    Filters: [],
-    Pages: 12,
+    movies: [],
+    filters: [],
+    pages: 12,
+};
+
+const moviesReducer = (state, action) => {
+    if (state === undefined) {
+        // state initial
+        return initialState.movies;
+    }
+    if (action.type === "myMovies") {
+        return action.value;
+    }
+    return state;
+};
+
+const filtersReducer = (state, action) => {
+    if (state === undefined) {
+        // state initial
+        return initialState.filters;
+    }
+    if (action.type === "myFilter") {
+        return action.value;
+    }
+    return state;
+};
+
+const pagesReducer = (state, action) => {
+    if (state === undefined) {
+        // state initial
+        return initialState.pages;
+    }
+    if (action.type === "myPage") {
+        return action.value;
+    }
+    return state;
 };
 
 export const myMovies = (moovies) => ({
@@ -22,28 +54,14 @@ export const myPage = (page) => ({
     value: page,
 });
 
-function reducer(state = initialState, action) {
-    if (action.type === "myMovies") {
-        return produce(state, (draft) => {
-            draft.Movies = action.value;
-        });
-    }
-    if (action.type === "myFilter") {
-        return produce(state, (draft) => {
-            draft.Filters = action.value;
-        });
-    }
-    if (action.type === "myPage") {
-        return produce(state, (draft) => {
-            draft.Pages = action.value;
-        });
-    }
-    return state;
-}
-
-export const store = createStore(reducer);
+export const store = configureStore({
+    reducer: {
+        movies: moviesReducer,
+        filters: filtersReducer,
+        pages: pagesReducer,
+    },
+});
 
 store.subscribe(() => {
-    // console.log("Nouveau state:");
-    // console.log(store.getState());
+    console.log(store.getState());
 });
