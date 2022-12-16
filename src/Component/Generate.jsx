@@ -12,12 +12,12 @@ export default function Generate() {
     const [pageNumber, setPageNumber] = useState(0);
 
     useEffect(() => {
-        if (myFilter !== undefined) filtre();
+        filtre();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [myMoovies, myFilter]);
 
     useEffect(() => {
-        if (mooviesFiltre.length > 0) setPages();
+        setPages();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [mooviesFiltre, myFilter, myMoovies, numberOfMoviesbyPage, pageNumber]);
 
@@ -55,7 +55,7 @@ export default function Generate() {
         <div>
             {mooviesFiltre.length <= numberOfMoviesbyPage && (
                 <div id="container">
-                    {mooviesFiltre.map((movie) => (
+                    {mooviesFiltre?.map((movie) => (
                         <Movie key={movie.id} movie={movie} />
                     ))}
                 </div>
@@ -63,7 +63,7 @@ export default function Generate() {
             {mooviesFiltre.length > numberOfMoviesbyPage && (
                 <div>
                     <div id="container">
-                        {arrayPages[pageNumber].map((movie) => (
+                        {arrayPages[pageNumber]?.map((movie) => (
                             <Movie key={movie.id} movie={movie} />
                         ))}
                     </div>

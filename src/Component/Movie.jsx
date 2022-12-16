@@ -37,7 +37,7 @@ export default function Movie({ movie }) {
     }
 
     //fermer la carte
-    function closeCard(e) {
+    function closeCard() {
         const newMoovies = myMoovies.filter((film) => film.id !== movie.id);
         dispatch(myMovies(newMoovies));
     }
