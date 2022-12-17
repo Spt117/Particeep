@@ -2,7 +2,7 @@ const initialState = {
     movies: [],
     filters: [],
     pages: 12,
-    likes: [],
+    mode: "gradient",
 };
 
 export const moviesReducer = (state, action) => {
@@ -36,12 +36,12 @@ export const pagesReducer = (state, action) => {
     return state;
 };
 
-export const likesReducer = (state, action) => {
+export const modeReducer = (state, action) => {
     if (state === undefined) {
         // state initial
-        return initialState.likes;
+        return initialState.mode;
     }
-    if (action.type === "myLikes") return action.value;
+    if (action.type === "myMode") return action.value;
 
     return state;
 };

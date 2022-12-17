@@ -3,7 +3,7 @@ import {
     moviesReducer,
     filtersReducer,
     pagesReducer,
-    likesReducer,
+    modeReducer,
 } from "./reducers.js";
 
 export const store = configureStore({
@@ -11,7 +11,7 @@ export const store = configureStore({
         movies: moviesReducer,
         filters: filtersReducer,
         pages: pagesReducer,
-        likes: likesReducer,
+        mode: modeReducer,
     },
 });
 

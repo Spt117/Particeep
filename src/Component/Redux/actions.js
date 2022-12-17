@@ -13,7 +13,7 @@ export const myPage = (page) => ({
     value: page,
 });
 
-export const myLikes = (like) => ({
-    type: "myLikes",
-    value: like,
+export const myMode = (mode) => ({
+    type: "myMode",
+    value: mode,
 });

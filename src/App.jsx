@@ -3,6 +3,7 @@ import Generate from "./Component/Generate.jsx";
 import ChoosePaginate from "./Component/ChoosePaginate.jsx";
 import Category from "./Component/Category.jsx";
 import Init from "./Component/Init.jsx";
+import Mode from "./Component/Mode.jsx";
 
 function App() {
     return (
@@ -14,7 +15,10 @@ function App() {
                     <h4>Panneau de contrôle</h4>
                     <div className="container">
                         <Category />
-                        <ChoosePaginate />
+                        <div>
+                            <ChoosePaginate />
+                            <Mode />
+                        </div>
                     </div>
                     <Init />
                 </div>

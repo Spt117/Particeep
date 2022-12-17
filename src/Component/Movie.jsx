@@ -48,7 +48,7 @@ export default function Movie({ movie }) {
                 X
             </button>
             <div className="card-title">{movie.title}</div>
-            <p>Catégorie : {movie.category}</p>
+            <p className="movie-category">Catégorie : {movie.category}</p>
             <button variant="primary" onClick={() => setLiked(!liked)}>
                 {liked ? "Dislike" : "Like"}
             </button>

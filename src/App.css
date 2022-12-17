@@ -18,12 +18,12 @@ body {
     );
 }
 
-#black h1 {
+#black .card {
     color: #fff;
 }
 
-#black .card-title {
-    color: #ccc;
+#black h1 {
+    color: #fff;
 }
 
 .container {
@@ -91,15 +91,16 @@ ul {
 .progress-bar {
     margin: 2%;
     height: 10px;
-    background-color: rgb(255, 241, 46);
-    border-radius: 5px;
+    background-color: #ff4136;
+    border-radius: 1rem;
     margin-bottom: 5%;
+    border: solid rgb(255, 255, 255, 0.5);
 }
 
 .progress-bar-filled {
     height: 100%;
-    border-radius: 5px;
-    background: rgb(226, 12, 137);
+    border-radius: 1rem;
+    background: #2ecc40;
 }
 
 .closeCard {
@@ -119,4 +120,312 @@ button {
 
 button:hover {
     background-color: rgb(255, 255, 255);
+}
+
+@import url("https://fonts.googleapis.com/css?family=Nunito:800i&display=swap");
+
+.wrapper {
+    margin-top: 5%;
+}
+
+#hide-checkbox {
+    opacity: 0;
+    height: 0;
+    width: 0;
+}
+
+.toggle {
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    width: 50px;
+    height: 25px;
+    background: #211042;
+    border-radius: 12px;
+    transition: 500ms;
+    overflow: hidden;
+}
+
+.toggle-button {
+    position: absolute;
+    display: inline-block;
+    top: 1.7px;
+    left: 1.5px;
+    width: 21.5px;
+    height: 21.5px;
+    border-radius: 50%;
+    background: #faeaf1;
+    overflow: hidden;
+    box-shadow: 0 0 9px 1px rgba(255, 255, 255);
+    transition: all 500ms ease-out;
+}
+
+.crater {
+    position: absolute;
+    display: inline-block;
+    background: #faeaf1;
+    border-radius: 50%;
+    transition: 500ms;
+}
+
+.crater-1 {
+    background: #fffff9;
+    width: 21.5px;
+    height: 21.5px;
+    left: 2.5px;
+    bottom: 2.5px;
+}
+
+.crater-2 {
+    width: 5px;
+    height: 5px;
+    top: -1.75px;
+    left: 11px;
+}
+
+.crater-3 {
+    width: 4px;
+    height: 4px;
+    top: 5px;
+    right: -1px;
+}
+
+.crater-4 {
+    width: 2.5px;
+    height: 2.5px;
+    top: 6px;
+    left: 7.5px;
+}
+
+.crater-5 {
+    width: 3.75px;
+    height: 3.75px;
+    top: 10px;
+    left: 12px;
+}
+
+.crater-6 {
+    width: 2px;
+    height: 2px;
+    top: 12px;
+    left: 5px;
+}
+
+.crater-7 {
+    width: 3px;
+    height: 3px;
+    bottom: 1.25px;
+    left: 8.75px;
+}
+
+.star {
+    position: absolute;
+    display: inline-block;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0.25px 0 0.5px 0.5px rgba(255, 255, 255);
+}
+
+.star-1 {
+    width: 1.5px;
+    height: 1.5px;
+    right: 22.5px;
+    bottom: 10px;
+}
+
+.star-2 {
+    width: 2px;
+    height: 2px;
+    right: 17.5px;
+    top: 2.5px;
+}
+
+.star-3 {
+    width: 1.25px;
+    height: 1.25px;
+    right: 15px;
+    bottom: 3.75px;
+}
+
+.star-4 {
+    width: 0.75px;
+    height: 0.75px;
+    right: 10px;
+    bottom: 12.5px;
+}
+
+.star-5 {
+    width: 1px;
+    height: 1px;
+    right: 2.5px;
+    bottom: 8.75px;
+}
+
+.star-6,
+.star-7,
+.star-8 {
+    width: 2.5px;
+    height: 0.5px;
+    border-radius: 0.5px;
+    transform: rotate(-45deg);
+    box-shadow: 1.25px 0px 1px 0.25px #fff;
+    animation-name: travel;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-out;
+    animation-iteration-count: infinite;
+}
+
+.star-6 {
+    right: 7.5px;
+    bottom: 7.5px;
+    animation-delay: -2s;
+}
+
+.star-7 {
+    right: 12.5px;
+    bottom: 15px;
+}
+
+.star-8 {
+    right: 22.5px;
+    top: 2.5px;
+    animation-delay: -4s;
+}
+
+@keyframes travel {
+    0% {
+        transform: rotate(-45deg) translateX(70px);
+    }
+
+    50% {
+        transform: rotate(-45deg) translateX(-20px);
+        box-shadow: 5px 0px 6px 1px #fff;
+    }
+
+    100% {
+        transform: rotate(-45deg) translateX(-30px);
+        width: 2px;
+        height: 2px;
+        opacity: 0;
+        box-shadow: none;
+    }
+}
+
+#hide-checkbox:checked + .toggle {
+    background: #24d7f7;
+}
+
+#hide-checkbox:checked + .toggle .toggle-button {
+    background: #f7ffff;
+    transform: translateX(25.5px);
+    box-shadow: 0 0 8.75px 1.25px rgba(255, 255, 255);
+}
+
+#hide-checkbox:checked + .toggle .toggle-button .crater {
+    transform: rotate(-45deg) translateX(17.5px);
+}
+
+#hide-checkbox:checked + .toggle .star {
+    animation: move 2s infinite;
+    transform: none;
+    box-shadow: none;
+}
+
+#hide-checkbox:checked + .toggle .star-1 {
+    width: 10px;
+    height: 2.5px;
+    border-radius: 2.5px;
+    background: #fff;
+    left: 5px;
+    top: 6.25px;
+    box-shadow: none;
+}
+
+#hide-checkbox:checked + .toggle .star-2 {
+    width: 3px;
+    height: 3px;
+    background: #fff;
+    left: 6.5px;
+    top: 5.75px;
+    box-shadow: -0.25px 0 0.5px 0 rgba(0, 0, 0, 0.1);
+}
+
+#hide-checkbox:checked + .toggle .star-3 {
+    width: 4px;
+    height: 4px;
+    background: #fff;
+    left: 8.75px;
+    top: 4.75px;
+    box-shadow: -0.25px 0 0.5px 0 rgba(0, 0, 0, 0.1);
+}
+
+#hide-checkbox:checked + .toggle .star-4 {
+    width: 3.75px;
+    height: 3.5px;
+    background: #fff;
+    left: 11.5px;
+    top: 5.25px;
+    box-shadow: -0.25px 0 0.5px 0 rgba(0, 0, 0, 0.1);
+}
+
+#hide-checkbox:checked + .toggle .star-5 {
+    width: 3.75px;
+    height: 3.75px;
+    border-radius: 3.75px;
+    background: #fff;
+    left: 7.5px;
+    bottom: 5px;
+    box-shadow: none;
+}
+
+#hide-checkbox:checked + .toggle .star-6 {
+    width: 4.5px;
+    height: 4.5px;
+    background: #fff;
+    border-radius: 50%;
+    left: 9.5px;
+    bottom: 5px;
+    box-shadow: -0.25px 0 0.5px 0 rgba(0, 0, 0, 0.1);
+}
+
+#hide-checkbox:checked + .toggle .star-7 {
+    width: 6px;
+    height: 6px;
+    background: #fff;
+    border-radius: 50%;
+    left: 13px;
+    bottom: 5px;
+    box-shadow: -0.25px 0 5px 0 rgba(0, 0, 0, 0.1);
+}
+
+#hide-checkbox:checked + .toggle .star-8 {
+    width: 5.25px;
+    height: 5.25px;
+    background: #fff;
+    border-radius: 50%;
+    left: 17.5px;
+    top: 14.75px;
+    box-shadow: -0.25px 0 0.5px 0 rgba(0, 0, 0, 0.1);
+}
+
+@keyframes move {
+    0% {
+        transform: none;
+    }
+
+    25% {
+        transform: translateX(2px);
+    }
+
+    100% {
+        transform: translateX(-2px);
+    }
+}
+
+p.morning {
+    background: #e67e22;
+}
+
+#mode {
+    margin: 5%;
 }
