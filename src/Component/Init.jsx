@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 export default function Init() {
     const dispatch = useDispatch();
     const theMode = useSelector((state) => state.mode);
-    const theAnimation = useSelector((state) => state.animation)
+    const theAnimation = useSelector((state) => state.animation);
 
     useEffect(() => {
         getMoovies();
@@ -20,9 +20,9 @@ export default function Init() {
     }, [theMode]);
 
     useEffect(() => {
-        animation()
+        animation();
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[theAnimation])
+    }, [theAnimation]);
 
     //Récupérer les films
     async function getMoovies() {
@@ -35,12 +35,12 @@ export default function Init() {
         document.querySelector(".modes").id = theMode;
     }
 
-    // activer/désactiver animations
+    // activer animations
     function animation() {
-        document.querySelector(".app").id = theAnimation
+        document.querySelector(".app").id = theAnimation;
     }
 
-    //fonction pour réinitialiser le state
+    //fonction pour réinitialiser le state sauf l'animation
     function resetState() {
         getMoovies();
         dispatch(myFilter([]));
@@ -50,8 +50,8 @@ export default function Init() {
 
     return (
         <div>
-            <button className="reset" onClick={resetState}>
-                <span className="text">Réinitialiser</span>
+            <button className="button-header" id="reset" onClick={resetState}>
+                <span>Réinitialiser</span>
             </button>
         </div>
     );

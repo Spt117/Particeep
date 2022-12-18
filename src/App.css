@@ -39,21 +39,10 @@ body {
     padding: 1%;
 }
 
-#category {
-    text-align: justify;
-    padding: 0%;
-}
-
 ul {
     list-style-type: none;
     padding: 0%;
     margin: 0%;
-}
-
-#filtres {
-    font-weight: bold;
-    text-align: center;
-    margin-bottom: 10%;
 }
 
 #label-paginate {
@@ -63,22 +52,30 @@ ul {
     margin-bottom: 10%;
 }
 
-#paginate{
+#paginate {
     margin-left: 45%;
 }
 
 #panel {
     box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.5);
     border-radius: 0.5rem;
-    margin: 1%;
-    background-color: rgba(255, 255, 255, 0.7);
-    width: 500px;
+    margin-right: 70%;
+    margin-top: 3%;
+    background-color: rgba(255, 255, 255, 0.9);
     display: none;
     position: fixed;
+    text-align: justify;
 }
 
+#panel h4 {
+    text-align: center;
+    margin: 0%;
+    padding: 10%;
+}
 
-
+#category {
+    padding-bottom: 10%;
+}
 
 #like {
     display: flex;
@@ -95,9 +92,8 @@ ul {
     width: 13rem;
 }
 
-#App .card{
+#App .card {
     animation: myAnim 1s ease 0s 1 normal forwards;
-
 }
 
 @keyframes myAnim {
@@ -165,12 +161,12 @@ button:hover {
 .button-like:active {
     transform: scale(1.025);
 }
-h1{
+h1 {
     margin: 0%;
     padding: 0%;
 }
 
-.reset {
+.navigation {
     align-items: center;
     background-image: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
     border: 0;
@@ -178,26 +174,11 @@ h1{
     box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
     box-sizing: border-box;
     color: #ffffff;
-    font-family: Phantomsans, sans-serif;
     justify-content: center;
-    line-height: 1em;
     padding: 3px;
-    text-decoration: none;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    white-space: nowrap;
-    cursor: pointer;
-    margin-left: 6%;
-    margin-top: -3%;
 }
 
-.reset:active,
-.reset:hover {
-    outline: 0;
-}
-
-.reset span {
+.navigation span {
     margin: 1%;
     padding: 3%;
     background-color: rgb(5, 6, 45);
@@ -206,19 +187,14 @@ h1{
     display: block;
 }
 
-.reset:hover span {
+.navigation:hover span {
     background: none;
 }
 
 @media (min-width: 768px) {
-    .reset {
+    .navigation {
         min-width: 196px;
     }
-}
-
-@import url("https://fonts.googleapis.com/css?family=Nunito:800i&display=swap");
-
-.wrapper {
 }
 
 #hide-checkbox {
@@ -523,22 +499,19 @@ p.morning {
     margin: 5%;
 }
 
-
-.container-image{
+.container-image {
     padding: 3%;
 }
 
-.image{
+.image {
     max-width: 100%;
     max-height: 15rem;
 }
 
-#button-panel{
+.button-header {
+    margin-left: 5%;
     padding: 5%;
     margin-top: -3%;
-}
-
-.button-pagination{
     width: 9rem;
     border: none;
     outline: none;
@@ -550,15 +523,23 @@ p.morning {
     border-radius: 10px;
 }
 
-
-
-
-.button-pagination:before {
-    content: '';
-    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+.button-header:before {
+    content: "";
+    background: linear-gradient(
+        45deg,
+        #ff0000,
+        #ff7300,
+        #fffb00,
+        #48ff00,
+        #00ffd5,
+        #002bff,
+        #7a00ff,
+        #ff00c8,
+        #ff0000
+    );
     position: absolute;
     top: -2px;
-    left:-2px;
+    left: -2px;
     background-size: 400%;
     z-index: -1;
     filter: blur(5px);
@@ -566,36 +547,43 @@ p.morning {
     height: calc(100% + 4px);
     animation: glowing 20s linear infinite;
     opacity: 0;
-    transition: opacity .3s ease-in-out;
+    transition: opacity 0.3s ease-in-out;
     border-radius: 10px;
 }
 
-.button-pagination:active {
-    color: #000
+.button-header:active {
+    color: #000;
 }
 
-.button-pagination:active:after {
+.button-header:active:after {
     background: transparent;
 }
 
-.button-pagination:hover:before {
+.button-header:hover:before {
     opacity: 1;
 }
 
-.button-pagination:after {
+.button-header:after {
     z-index: -1;
-    content: '';
+    content: "";
+    background: #111;
+
     position: absolute;
     width: 100%;
     height: 100%;
-    background: #111;
     left: 0;
     top: 0;
     border-radius: 10px;
 }
 
 @keyframes glowing {
-    0% { background-position: 0 0; }
-    50% { background-position: 400% 0; }
-    100% { background-position: 0 0; }
+    0% {
+        background-position: 0 0;
+    }
+    50% {
+        background-position: 400% 0;
+    }
+    100% {
+        background-position: 0 0;
+    }
 }

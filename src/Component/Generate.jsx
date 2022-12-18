@@ -13,7 +13,7 @@ export default function Generate() {
     const [pageNumber, setPageNumber] = useState(0);
     const [bool, setBool] = useState(false);
 
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
 
     useEffect(() => {
         filtre();
@@ -79,7 +79,7 @@ export default function Generate() {
     function stopAnimation() {
         setTimeout(() => {
             setBool(true);
-            dispatch(myAnimation("stop"))
+            dispatch(myAnimation("stop"));
         }, mooviesFiltre.length * 310);
     }
 
@@ -103,24 +103,24 @@ export default function Generate() {
                         <div>
                             {pageNumber >= 1 && (
                                 <button
-                                    className="button-pagination"
+                                    className="navigation"
                                     onClick={() =>
                                         setPageNumber(pageNumber - 1)
                                     }
                                 >
-                                    Page précédente
+                                    <span>Page précédente</span>
                                 </button>
                             )}
                         </div>
                         <div>
                             {pageNumber < arrayPages.length - 1 && (
                                 <button
-                                    className="button-pagination"
+                                    className="navigation"
                                     onClick={() =>
                                         setPageNumber(pageNumber + 1)
                                     }
                                 >
-                                    Page suivante
+                                    <span>Page suivante</span>
                                 </button>
                             )}
                         </div>

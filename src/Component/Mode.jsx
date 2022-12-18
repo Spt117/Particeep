@@ -23,7 +23,7 @@ export default function Mode() {
 
     //réinitialiser le bouton
     function reset() {
-        const reset = document.querySelector(".reset");
+        const reset = document.querySelector("#reset");
         const button = document.querySelector("#hide-checkbox");
         reset.addEventListener("click", (event) => {
             button.checked = false;

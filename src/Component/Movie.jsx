@@ -11,7 +11,13 @@ export default function Movie({ movie }) {
     const myMoovies = useSelector((state) => state.movies);
     const dispatch = useDispatch();
 
-    const image = <img className="image" alt={movie.title} src={require(`./Images/card-${movie.id}.jpg`)} />
+    const image = (
+        <img
+            className="image"
+            alt={movie.title}
+            src={require(`./Images/card-${movie.id}.jpg`)}
+        />
+    );
 
     useEffect(() => {
         likes();
@@ -47,7 +53,7 @@ export default function Movie({ movie }) {
 
     //réinitialiser les likes
     function reset() {
-        const button = document.querySelector(".reset");
+        const button = document.querySelector("#reset");
         button.addEventListener("click", (event) => {
             setDislike(movie.dislikes);
             setlike(movie.likes);
@@ -60,9 +66,7 @@ export default function Movie({ movie }) {
                 X
             </button>
             <div className="card-title">{movie.title}</div>
-            <div className="container-image">
-            {image}
-            </div>
+            <div className="container-image">{image}</div>
             <p className="movie-category">Catégorie : {movie.category}</p>
 
             <button

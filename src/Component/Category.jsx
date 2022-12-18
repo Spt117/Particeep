@@ -37,7 +37,7 @@ export default function Category() {
 
     // réinitialiser les catégories
     function reset() {
-        const button = document.querySelector(".reset");
+        const button = document.querySelector("#reset");
         let arrayCheckbox = document.getElementsByName("category");
         button.addEventListener("click", (event) => {
             for (const checkbox of arrayCheckbox) {
@@ -46,24 +46,35 @@ export default function Category() {
         });
     }
 
+    //fermer le panneau de contrôle
+    function closePanel() {
+        const panel = document.querySelector("#panel");
+        panel.style.display = "none";
+    }
+
     return (
-        <div id="category">
-            <ul id="liste">
-                <li id="filtres">Filtres</li>
-                {category.map((category, index) => (
-                    <li key={index}>
-                        <label>
-                            <input
-                                type="checkbox"
-                                name="category"
-                                value={category}
-                                onChange={filtre}
-                            />
-                            {category}
-                        </label>
-                    </li>
-                ))}
-            </ul>
+        <div id="panel">
+            <button className="closeCard" onClick={closePanel} title="Close">
+                X
+            </button>
+            <h4>Filtres</h4>
+            <div id="category">
+                <ul>
+                    {category.map((category, index) => (
+                        <li key={index}>
+                            <label>
+                                <input
+                                    type="checkbox"
+                                    name="category"
+                                    value={category}
+                                    onChange={filtre}
+                                />
+                                {category}
+                            </label>
+                        </li>
+                    ))}
+                </ul>
+            </div>
         </div>
     );
 }
