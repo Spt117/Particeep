@@ -19,7 +19,7 @@ export default function ChoosePaginate() {
 
     // réinitialiser le paginate
     function reset() {
-        const button = document.querySelector("#reset");
+        const button = document.querySelector(".reset");
         const paginate = document.querySelector("#paginate");
         button.addEventListener("click", (event) => {
             paginate.value = 12;

@@ -39,8 +39,8 @@ export default function Init() {
 
     return (
         <div>
-            <button id="reset" onClick={resetState}>
-                Réinitialiser le state
+            <button className="reset" onClick={resetState}>
+                <span className="text">Réinitialiser</span>
             </button>
         </div>
     );

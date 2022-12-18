@@ -37,7 +37,7 @@ export default function Category() {
 
     // réinitialiser les catégories
     function reset() {
-        const button = document.querySelector("#reset");
+        const button = document.querySelector(".reset");
         let arrayCheckbox = document.getElementsByName("category");
         button.addEventListener("click", (event) => {
             for (const checkbox of arrayCheckbox) {

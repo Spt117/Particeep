@@ -10,6 +10,7 @@ export default function Generate() {
     const [mooviesFiltre, setMooviesFiltre] = useState([]);
     const [arrayPages, setArrayPages] = useState([]);
     const [pageNumber, setPageNumber] = useState(0);
+    const [bool, setBool] = useState(false);
 
     useEffect(() => {
         filtre();
@@ -38,12 +39,50 @@ export default function Generate() {
 
     // on fait des tableaux enfants pour les pages
     function setPages() {
+        if (!bool) displayNone();
         let parentArray = [];
         for (let i = 0; i < mooviesFiltre.length; i += numberOfMoviesbyPage) {
             let child = mooviesFiltre.slice(i, i + numberOfMoviesbyPage);
             parentArray.push(child);
         }
         setArrayPages(parentArray);
+        if (!bool) {
+            for (let i = 0; i < mooviesFiltre.length; i++) {
+                block(`#card-${mooviesFiltre[i].id}`, i * 300);
+            }
+            if (mooviesFiltre.length > 0) {
+                block("#panel", mooviesFiltre.length * 310);
+                stopAnimation();
+            }
+        }
+    }
+
+    //on désactive les div pour l'animation
+    function displayNone() {
+        for (let i = 0; i < mooviesFiltre.length; i++) {
+            const card = document.querySelector(`#card-${mooviesFiltre[i].id}`);
+            card.style.display = "none";
+        }
+        const pannel = document.querySelector(`#panel`);
+        pannel.style.display = "none";
+    }
+
+    // on réactive les div avec un timer
+    function block(id, time) {
+        setTimeout(() => {
+            const card = document.querySelector(id);
+            card.style.display = "block";
+        }, time);
+    }
+
+    // on désactive l'animation
+    function stopAnimation() {
+        const cards = document.querySelector(".card");
+        console.log(cards.style);
+        setTimeout(() => {
+            setBool(true);
+            cards.classList.remove("card");
+        }, mooviesFiltre.length * 310);
     }
 
     return (

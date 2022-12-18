@@ -13,6 +13,7 @@ export default function Movie({ movie }) {
 
     useEffect(() => {
         likes();
+        reset();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [liked, like, disLike]);
 
@@ -42,6 +43,15 @@ export default function Movie({ movie }) {
         dispatch(myMovies(newMoovies));
     }
 
+    //réinitialiser les likes
+    function reset() {
+        const button = document.querySelector(".reset");
+        button.addEventListener("click", (event) => {
+            setDislike(movie.dislikes);
+            setlike(movie.likes);
+        });
+    }
+
     return (
         <div className="card" id={`card-${movie.id}`}>
             <button className="closeCard" onClick={closeCard} title="Close">
@@ -49,7 +59,12 @@ export default function Movie({ movie }) {
             </button>
             <div className="card-title">{movie.title}</div>
             <p className="movie-category">Catégorie : {movie.category}</p>
-            <button variant="primary" onClick={() => setLiked(!liked)}>
+
+            <button
+                className="button-like"
+                variant="primary"
+                onClick={() => setLiked(!liked)}
+            >
                 {liked ? "Dislike" : "Like"}
             </button>
             {liked && <span> Vous aimez ❤️</span>}
