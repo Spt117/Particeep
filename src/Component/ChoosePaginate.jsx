@@ -28,9 +28,6 @@ export default function ChoosePaginate() {
 
     return (
         <div>
-            <label htmlFor="paginate" id="label-paginate">
-                Films par pages{" "}
-            </label>
             <select name="pages" id="paginate" onChange={getPaginate}>
                 <option value="12">12</option>
                 <option value="8">8</option>

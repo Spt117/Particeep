@@ -30,6 +30,13 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    margin-top: 1%;
+}
+
+.container2 {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1%;
 }
 
 #category {
@@ -56,27 +63,22 @@ ul {
     margin-bottom: 10%;
 }
 
+#paginate{
+    margin-left: 45%;
+}
+
 #panel {
     box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.5);
     border-radius: 0.5rem;
     margin: 1%;
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.7);
     width: 500px;
-    animation: myAnim 5s ease 0s 1 normal forwards;
-}
-@keyframes myAnim {
-    0% {
-        transform: scale(2);
-    }
-
-    100% {
-        transform: scale(1);
-    }
+    display: none;
+    position: fixed;
 }
 
-#reset {
-    margin: 3%;
-}
+
+
 
 #like {
     display: flex;
@@ -163,6 +165,10 @@ button:hover {
 .button-like:active {
     transform: scale(1.025);
 }
+h1{
+    margin: 0%;
+    padding: 0%;
+}
 
 .reset {
     align-items: center;
@@ -182,7 +188,8 @@ button:hover {
     touch-action: manipulation;
     white-space: nowrap;
     cursor: pointer;
-    margin: 3%;
+    margin-left: 6%;
+    margin-top: -3%;
 }
 
 .reset:active,
@@ -212,7 +219,6 @@ button:hover {
 @import url("https://fonts.googleapis.com/css?family=Nunito:800i&display=swap");
 
 .wrapper {
-    margin-top: 5%;
 }
 
 #hide-checkbox {
@@ -527,9 +533,13 @@ p.morning {
     max-height: 15rem;
 }
 
+#button-panel{
+    padding: 5%;
+    margin-top: -3%;
+}
+
 .button-pagination{
     width: 9rem;
-    padding: 5%;
     border: none;
     outline: none;
     color: #fff;

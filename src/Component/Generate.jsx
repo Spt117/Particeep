@@ -54,7 +54,6 @@ export default function Generate() {
                 block(`#card-${mooviesFiltre[i].id}`, i * 300);
             }
             if (mooviesFiltre.length > 0) {
-                block("#panel", mooviesFiltre.length *310);
                 stopAnimation();
             }
         }
@@ -66,8 +65,6 @@ export default function Generate() {
             const card = document.querySelector(`#card-${mooviesFiltre[i].id}`);
             card.style.display = "none";
         }
-        const pannel = document.querySelector(`#panel`);
-        pannel.style.display = "none";
     }
 
     // on réactive les div avec un timer

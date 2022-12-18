@@ -3,7 +3,6 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { myMovies } from "./Redux/actions.js";
 
-
 export default function Movie({ movie }) {
     const [liked, setLiked] = useState(null);
     const [like, setlike] = useState(0);

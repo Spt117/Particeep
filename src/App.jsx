@@ -1,13 +1,12 @@
 import "./App.css";
 import Generate from "./Component/Generate.jsx";
-import PanelControl from "./Component/PanelControl.jsx";
+import Header from "./Component/Header";
 
 function App() {
     return (
         <div className="app">
-            <h1>Mes films préférés</h1>
+            <Header/>
             <Generate />
-            <PanelControl />
         </div>
     );
 }
