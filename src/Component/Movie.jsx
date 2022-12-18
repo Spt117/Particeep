@@ -3,6 +3,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { myMovies } from "./Redux/actions.js";
 
+
 export default function Movie({ movie }) {
     const [liked, setLiked] = useState(null);
     const [like, setlike] = useState(0);
@@ -10,6 +11,8 @@ export default function Movie({ movie }) {
     const [ratio, setRatio] = useState(0);
     const myMoovies = useSelector((state) => state.movies);
     const dispatch = useDispatch();
+
+    const image = <img className="image" alt={movie.title} src={require(`./Images/card-${movie.id}.jpg`)} />
 
     useEffect(() => {
         likes();
@@ -58,6 +61,9 @@ export default function Movie({ movie }) {
                 X
             </button>
             <div className="card-title">{movie.title}</div>
+            <div className="container-image">
+            {image}
+            </div>
             <p className="movie-category">Catégorie : {movie.category}</p>
 
             <button
