@@ -4,6 +4,7 @@ import {
     filtersReducer,
     pagesReducer,
     modeReducer,
+    animationReducer,
 } from "./reducers.js";
 
 export const store = configureStore({
@@ -12,9 +13,10 @@ export const store = configureStore({
         filters: filtersReducer,
         pages: pagesReducer,
         mode: modeReducer,
+        animation: animationReducer
     },
 });
 
 store.subscribe(() => {
-    // console.log(store.getState());
+    console.log(store.getState());
 });

@@ -3,6 +3,7 @@ const initialState = {
     filters: [],
     pages: 12,
     mode: "gradient",
+    animation: "App"
 };
 
 export const moviesReducer = (state, action) => {
@@ -45,3 +46,12 @@ export const modeReducer = (state, action) => {
 
     return state;
 };
+
+export const animationReducer = (state, action) => {
+    if (state === undefined) {
+        // state initial
+        return initialState.animation;
+    }
+    if (action.type === "myAnimation") return action.value;
+    return state;
+}

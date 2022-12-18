@@ -17,3 +17,9 @@ export const myMode = (mode) => ({
     type: "myMode",
     value: mode,
 });
+
+
+export const myAnimation = (animation) => ({
+    type: "myAnimation",
+    value: animation,
+})

@@ -4,7 +4,7 @@ import PanelControl from "./Component/PanelControl.jsx";
 
 function App() {
     return (
-        <div className="App">
+        <div className="app">
             <h1>Mes films préférés</h1>
             <Generate />
             <PanelControl />

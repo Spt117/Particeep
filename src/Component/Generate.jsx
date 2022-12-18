@@ -1,6 +1,7 @@
 import Movie from "./Movie.jsx";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
+import { myAnimation } from "./Redux/actions.js";
 
 export default function Generate() {
     const myMoovies = useSelector((state) => state.movies);
@@ -11,6 +12,8 @@ export default function Generate() {
     const [arrayPages, setArrayPages] = useState([]);
     const [pageNumber, setPageNumber] = useState(0);
     const [bool, setBool] = useState(false);
+
+    const dispatch = useDispatch()
 
     useEffect(() => {
         filtre();
@@ -47,11 +50,11 @@ export default function Generate() {
         }
         setArrayPages(parentArray);
         if (!bool) {
-            // for (let i = 0; i < mooviesFiltre.length; i++) {
-            //     block(`#card-${mooviesFiltre[i].id}`, i * 300);
-            // }
+            for (let i = 0; i < mooviesFiltre.length; i++) {
+                block(`#card-${mooviesFiltre[i].id}`, i * 300);
+            }
             if (mooviesFiltre.length > 0) {
-                block("#panel", 0);
+                block("#panel", mooviesFiltre.length *310);
                 stopAnimation();
             }
         }
@@ -59,10 +62,10 @@ export default function Generate() {
 
     //on désactive les div pour l'animation
     function displayNone() {
-        // for (let i = 0; i < mooviesFiltre.length; i++) {
-        //     const card = document.querySelector(`#card-${mooviesFiltre[i].id}`);
-        //     card.style.display = "none";
-        // }
+        for (let i = 0; i < mooviesFiltre.length; i++) {
+            const card = document.querySelector(`#card-${mooviesFiltre[i].id}`);
+            card.style.display = "none";
+        }
         const pannel = document.querySelector(`#panel`);
         pannel.style.display = "none";
     }
@@ -77,11 +80,9 @@ export default function Generate() {
 
     // on désactive l'animation
     function stopAnimation() {
-        // const cards = document.querySelector(".card");
-        // console.log(cards.style);
         setTimeout(() => {
             setBool(true);
-            // cards.classList.remove("card");
+            dispatch(myAnimation("stop"))
         }, mooviesFiltre.length * 310);
     }
 

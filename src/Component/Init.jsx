@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 export default function Init() {
     const dispatch = useDispatch();
     const theMode = useSelector((state) => state.mode);
+    const theAnimation = useSelector((state) => state.animation)
 
     useEffect(() => {
         getMoovies();
@@ -18,6 +19,11 @@ export default function Init() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [theMode]);
 
+    useEffect(() => {
+        animation()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[theAnimation])
+
     //Récupérer les films
     async function getMoovies() {
         const moovies = await movies$;
@@ -27,6 +33,11 @@ export default function Init() {
     //récupérer le thème
     function theme() {
         document.querySelector(".modes").id = theMode;
+    }
+
+    // activer/désactiver animations
+    function animation() {
+        document.querySelector(".app").id = theAnimation
     }
 
     //fonction pour réinitialiser le state
