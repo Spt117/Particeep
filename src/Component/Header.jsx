@@ -6,17 +6,19 @@ import ActivatePanel from "./ActivatePanel";
 
 export default function Header() {
     return (
-        <div className="container">
-            <div className="container2">
-                <ActivatePanel />
-                <ChoosePaginate />
-            </div>
+        <div>
             <h1>Mes films préférés</h1>
-            <div className="container2">
-                <Mode />
-                <Init />
+            <div id="container3">
+                <div className="container2">
+                    <ActivatePanel />
+                    <ChoosePaginate />
+                </div>
+                <div className="container2">
+                    <Mode />
+                    <Init />
+                </div>
+                <Category />
             </div>
-            <Category />
         </div>
     );
 }
