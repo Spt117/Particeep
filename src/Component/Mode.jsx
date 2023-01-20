@@ -31,7 +31,7 @@ export default function Mode() {
     }
 
     return (
-        <div className="wrapper">
+        <div id="wrapper">
             <input type="checkbox" id="hide-checkbox" onChange={mode} />
             <label htmlFor="hide-checkbox" className="toggle">
                 <span className="toggle-button">

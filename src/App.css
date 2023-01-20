@@ -34,14 +34,16 @@ body {
 }
 #container3 {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
     margin-top: 1%;
 }
 
 .container2 {
+    margin: 1%;
     display: flex;
-    justify-content: flex-end;
-    padding: 1%;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 ul {
