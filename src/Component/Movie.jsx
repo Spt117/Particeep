@@ -61,32 +61,34 @@ export default function Movie({ movie }) {
     }
 
     return (
-        <div className="card" id={`card-${movie.id}`}>
-            <button className="closeCard" onClick={closeCard} title="Close">
-                X
-            </button>
-            <div className="card-title">{movie.title}</div>
-            <div className="container-image">{image}</div>
-            <p className="movie-category">Catégorie : {movie.category}</p>
+        <div className="card-container">
+            <div className="card" id={`card-${movie.id}`}>
+                <button className="closeCard" onClick={closeCard} title="Close">
+                    X
+                </button>
+                <div className="card-title">{movie.title}</div>
+                <div className="container-image">{image}</div>
+                <p className="movie-category">Catégorie : {movie.category}</p>
 
-            <button
-                className="button-like"
-                variant="primary"
-                onClick={() => setLiked(!liked)}
-            >
-                {liked ? "Dislike" : "Like"}
-            </button>
-            {liked && <span> Vous aimez ❤️</span>}
-            {liked === false && <span> Vous n'aimez pas 😒</span>}
-            <div className="progress-bar">
-                <div
-                    className="progress-bar-filled"
-                    style={{ width: `${ratio}%` }}
-                ></div>
-            </div>
-            <div id="like">
-                <div>{like} 👍</div>
-                <div>{disLike} 👎</div>
+                <button
+                    className="button-like"
+                    variant="primary"
+                    onClick={() => setLiked(!liked)}
+                >
+                    {liked ? "Dislike" : "Like"}
+                </button>
+                {liked && <span> Vous aimez ❤️</span>}
+                {liked === false && <span> Vous n'aimez pas 😒</span>}
+                <div className="progress-bar">
+                    <div
+                        className="progress-bar-filled"
+                        style={{ width: `${ratio}%` }}
+                    ></div>
+                </div>
+                <div id="like">
+                    <div>{like} 👍</div>
+                    <div>{disLike} 👎</div>
+                </div>
             </div>
         </div>
     );
