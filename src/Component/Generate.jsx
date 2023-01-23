@@ -99,7 +99,7 @@ export default function Generate() {
                             <Movie key={movie.id} movie={movie} />
                         ))}
                     </div>
-                    <div className="container">
+                    <div className="container" id="nav">
                         <div>
                             {pageNumber >= 1 && (
                                 <button
