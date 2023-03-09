@@ -13,10 +13,10 @@ export const store = configureStore({
         filters: filtersReducer,
         pages: pagesReducer,
         mode: modeReducer,
-        animation: animationReducer
+        animation: animationReducer,
     },
 });
 
-store.subscribe(() => {
-    console.log(store.getState());
-});
+// store.subscribe(() => {
+//     console.log(store.getState());
+// });
